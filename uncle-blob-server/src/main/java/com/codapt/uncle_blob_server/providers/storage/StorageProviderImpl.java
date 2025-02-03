@@ -92,7 +92,9 @@ public class StorageProviderImpl implements StorageProvider {
             Path filePath = getFilePath(fileName);
             Files.delete(filePath);
 
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }
