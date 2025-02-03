@@ -23,7 +23,7 @@ public class DownloadController {
     @Autowired
     private DownloadService service;
 
-    private static final String DEFAULT_DISPOSITION = "attatchment";
+    private static final String DEFAULT_DISPOSITION = "attachment";
     
     @GetMapping("/{fileName}")
     public ResponseEntity<byte[]> getByFileName(
