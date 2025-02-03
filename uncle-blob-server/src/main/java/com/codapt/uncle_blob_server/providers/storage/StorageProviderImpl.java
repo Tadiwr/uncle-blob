@@ -30,17 +30,11 @@ public class StorageProviderImpl implements StorageProvider {
     }
 
     public Path getFilePath(String filePath) {
-        String storageDir = getStorageDir().toString();
-        String absPath = storageDir + File.separator + filePath;
-
-        return Paths.get(absPath);
+        return getStorageDir().resolve(filePath);
     }
 
     public Path getStorageDir() {
-        String projectPath = System.getProperty("user.dir");
-        String absPath = projectPath + File.separator + storageName;
-
-        return Paths.get(absPath);
+        return Paths.get(System.getProperty("user.dir")).resolve(storageName);
     }
 
     @Override
