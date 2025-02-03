@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.codapt</groupId>
 	<artifactId>uncle-blob-server</artifactId>
-	<version>0.0.0</version>
+	<version>0.0.1</version>
 	<name>uncle-blob-server</name>
 
 	<description>A light weight storage server</description>
@@ -51,6 +51,13 @@
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.25.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.8.4</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.hibernate.orm</groupId>
