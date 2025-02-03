@@ -14,4 +14,5 @@ public interface FileUploadService {
 
     public FileUpload saveFileRecord(FileUpload fileUpload);
 
+    public void delete(FileUpload fileUpload);
 }
