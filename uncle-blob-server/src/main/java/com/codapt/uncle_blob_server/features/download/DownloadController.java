@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DownloadController {
     
     @GetMapping("/{fileName}")
-    public ResponseEntity<byte[]> getByFileName(@RequestParam String param) {
+    public ResponseEntity<byte[]> getByFileName(@RequestParam String fileName) {
         throw new UnsupportedOperationException();
     }
     

@@ -14,7 +14,7 @@ public class FileUploadDto {
     private String fileName;
     private String originalFileName;
     
-    private String fileSize;
+    private Long fileSize;
     private String contentType;
 
     private Date uploadedAt;
@@ -25,7 +25,7 @@ public class FileUploadDto {
         this.fileName = file.getFileName();
 
         this.contentType = file.getContentType().toString();
-        this.fileSize = file.getFileSize().toString() + " bytes";
+        this.fileSize = file.getFileSize();
         this.originalFileName = file.getOriginalFileName();
 
         this.uploadedAt = new Date(file.getUploadedAt());
