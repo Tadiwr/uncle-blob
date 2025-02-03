@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import NavBar from "./components/navigation/NavBar";
 
 
 const inter = localFont({
@@ -21,8 +22,14 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${inter.className} antialiased`}
-      >
-        {children}
+      > 
+        <div className="fixed w-full top-0 left-0 bottom-0 h-16" >
+          <NavBar />
+        </div>
+
+        <div className="mt-16" >
+          {children}
+        </div>
       </body>
     </html>
   );
