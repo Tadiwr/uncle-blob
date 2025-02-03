@@ -2,6 +2,24 @@ spring:
     application:
         name: uncle-blob-server
 
+    jpa:
+        database-platform: org.hibernate.community.dialect.SQLiteDialect
+        hibernate.ddl-auto: update
+
+    datasource:
+        url: jdbc:sqlite:./db/db.sqlite
+        driver-class-name: org.sqlite.JDBC
+        username: admin
+        password: admin
+
+server:
+    port: ${PORT:8888}
+
 eureka:
-    client:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
         
