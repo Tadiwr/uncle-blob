@@ -43,6 +43,8 @@ public class StorageProviderImpl implements StorageProvider {
 
     @Override
     public StorageFile uploadFile(String fileName, byte[] bytes) throws IOException {
+        FileNameChecker.check(fileName);
+
         Path filePath = getFilePath(fileName);
         boolean fileExits = Files.exists(filePath);
 
@@ -62,6 +64,8 @@ public class StorageProviderImpl implements StorageProvider {
     @Override
     public StorageFile getFile(String fileName) throws IOException {
 
+        FileNameChecker.check(fileName);
+
         Path filePath = getFilePath(fileName);
         boolean fileExits = Files.exists(filePath);
 
@@ -80,11 +84,28 @@ public class StorageProviderImpl implements StorageProvider {
 
     @Override
     public StorageFile overwrite(String fileName, byte[] bytes) throws IOException {
-        return uploadFile(fileName, bytes);
+
+        FileNameChecker.check(fileName);
+
+        Path filePath = getFilePath(fileName);
+
+        if (!Files.exists(filePath)) {
+            String message = "Can't overwite because file with name " + 
+            fileName + " does not exists";
+            
+            throw new NotFoundError(message);
+        }
+
+        Path finalPath = Files.write(filePath, bytes);
+
+        return new StorageFile(finalPath, bytes);
     }
 
     @Override
     public void deleteFile(String fileName) {
+
+        FileNameChecker.check(fileName);
+
         try {
             
             Path filePath = getFilePath(fileName);
