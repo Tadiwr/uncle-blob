@@ -22,7 +22,7 @@ public class DeleteController {
     ) {
         service.delete(fileName);
 
-        String message = "File quitely deleted";
+        String message = "File quietly deleted";
 
         return ResponseEntity.ok(new RestSuccess(message));
     }
