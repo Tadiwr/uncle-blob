@@ -13,22 +13,25 @@ import com.codapt.uncle_blob_server.providers.storage.entities.StorageFile;
 
 public class StorageProviderImpl implements StorageProvider {
 
-    private String storageName = ".storage";
+    private Path storagePath;
 
     private Logger logger = Logger.getLogger(StorageProviderImpl.class.getName());
 
-    public StorageProviderImpl() {
+    public StorageProviderImpl(String storagePathStr) throws IOException {
+        
+        this.storagePath = Paths.get(storagePathStr);
 
-        Path storagePath = getStorageDir();
-        File file = storagePath.toFile();
+        if (!Files.exists(storagePath)) {
 
-        if (!file.exists()) {
-            file.mkdir();
-            logger.info("Initialised storage dir '.storage' in project root\n");
+            Files.createDirectories(storagePath);
+
+            logger.info("Storage Path set to '" + storagePath.toString() + "'");
+            logger.info("Storage Path has been intialised");
 
         } else {
+              
             logger.info("Storage Directory already initialized");
-        }
+        } 
     }
 
     public Path getFilePath(String filePath) {
@@ -36,7 +39,7 @@ public class StorageProviderImpl implements StorageProvider {
     }
 
     public Path getStorageDir() {
-        return Paths.get(System.getProperty("user.dir")).resolve(storageName);
+        return storagePath;
     }
 
     @Override
