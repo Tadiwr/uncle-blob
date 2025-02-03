@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codapt.uncle_blob_server.features.download.dto.FileDownloadBytes;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
@@ -27,11 +29,11 @@ public class DownloadController {
     public ResponseEntity<byte[]> getByFileName(
         @PathVariable String fileName,
         @RequestParam(defaultValue = DEFAULT_DISPOSITION) String disposition
-    ) {
+    ) throws IOException {
 
         FileDownloadBytes file = service.download(fileName);
 
-        ContentDisposition contentDisposition = disposition == DEFAULT_DISPOSITION ?
+        ContentDisposition contentDisposition = disposition.equals(DEFAULT_DISPOSITION) ?
             ContentDisposition.attachment()
                 .filename(fileName)
                 .build()
@@ -47,6 +49,7 @@ public class DownloadController {
 
         return ResponseEntity.ok()
             .headers(headers)
+            .contentType(file.getContentType())
             .body(file.getBytes());
 
     }
