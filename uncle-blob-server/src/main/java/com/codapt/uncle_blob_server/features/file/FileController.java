@@ -20,8 +20,8 @@ public class FileController {
         throw new UnsupportedOperationException();
     }
 
-    @GetMapping("/{fileUuid}")
-    public String getFileByUUID(@PathVariable String fileUuid) {
+    @GetMapping("/{fileName}")
+    public String getFileByUUID(@PathVariable String fileName) {
         throw new UnsupportedOperationException();
     }
     
