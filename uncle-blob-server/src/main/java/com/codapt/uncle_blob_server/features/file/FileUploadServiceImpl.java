@@ -43,5 +43,10 @@ public class FileUploadServiceImpl implements FileUploadService {
     public FileUpload saveFileRecord(FileUpload fileUpload) {
         return repository.save(fileUpload);
     }
+
+    @Override
+    public void delete(FileUpload fileUpload) {
+        repository.delete(fileUpload);
+    }
     
 }
