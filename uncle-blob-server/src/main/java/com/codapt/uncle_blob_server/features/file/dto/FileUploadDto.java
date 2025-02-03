@@ -1,8 +1,8 @@
-package com.codapt.uncle_blob_server.features.file_upload.dto;
+package com.codapt.uncle_blob_server.features.file.dto;
 
 import java.util.Date;
 
-import com.codapt.uncle_blob_server.features.file_upload.FileUpload;
+import com.codapt.uncle_blob_server.features.file.FileUpload;
 
 import lombok.Data;
 
