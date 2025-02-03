@@ -28,13 +28,8 @@ export default function NavBar() {
 
   return (
     <div className='h-full '>
-        <div className='hidden md:block h-full w-full' >
-            <DesktopNavBar navLinks={navLinks} />
-        </div>
-
-        <div className='block md:hidden h-full w-full' >
-            <MobileNavBar navLinks={navLinks} />
-        </div>
+        <DesktopNavBar navLinks={navLinks} />
+        <MobileNavBar navLinks={navLinks} />
     </div>
   )
 }

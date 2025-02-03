@@ -7,6 +7,6 @@ type Props = {
 
 export default function DesktopNavBar({navLinks}: Props) {
   return (
-    <div>DesktopNavBar</div>
+    <div className='hidden md:flex' >DesktopNavBar</div>
   )
 }
