@@ -6,10 +6,11 @@ import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
-    data: NavItem
+    data: NavItem,
+    className?:string
 }
 
-export default function NavLink({ data }: Props) {
+export default function NavLink({ data, className }: Props) {
 
     const pathName = usePathname();
     const {lable, href} = data;
@@ -17,7 +18,7 @@ export default function NavLink({ data }: Props) {
     const isActive = href ? pathName.startsWith(href) : false;
 
     return (
-        <a href={href} className={twMerge("font", isActive ? "text-black font-semibold" : "text-white hover:text-slate-200")} >
+        <a href={href} className={twMerge("font", isActive ? "text-black font-semibold" : "text-white hover:text-slate-200", className)} >
             {lable}
         </a>
     )

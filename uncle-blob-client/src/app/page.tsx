@@ -1,4 +1,5 @@
 import React from 'react'
+import PrimaryLinkButton from './components/buttons/PrimaryLinkButton'
 
 export default function HomePage() {
   return (
@@ -6,6 +7,11 @@ export default function HomePage() {
       <h1 className='text-4xl md:text-7xl font-black' >Uncle Blob Client</h1>
 
       <p className='text-slate-500 mt-3' >Client UI for the easy to use light weight file server</p>
+
+      <div className='w-full mt-3 items-center justify-center flex flex-wrap' >
+        <PrimaryLinkButton className='mr-2' >View Docs</PrimaryLinkButton>
+        <PrimaryLinkButton className='bg-green-500' >View Swagger Api Docs</PrimaryLinkButton>
+      </div>
     </div>
   )
 }
