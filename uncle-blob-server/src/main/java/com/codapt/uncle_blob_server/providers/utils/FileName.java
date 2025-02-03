@@ -6,7 +6,7 @@ public class FileName {
     private static String delimiter = "\\.";
 
     public FileName(String fileName) {
-
+        this.principle = fileName;
     }
 
     public String getFileName() {
