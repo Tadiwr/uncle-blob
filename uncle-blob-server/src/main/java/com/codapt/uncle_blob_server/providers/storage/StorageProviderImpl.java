@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 import com.codapt.uncle_blob_server.exceptions.BadRequestError;
 import com.codapt.uncle_blob_server.exceptions.NotFoundError;
@@ -14,6 +15,8 @@ public class StorageProviderImpl implements StorageProvider {
 
     private String storageName = ".storage";
 
+    private Logger logger = Logger.getLogger(StorageProviderImpl.class.getName());
+
     public StorageProviderImpl() {
 
         Path storagePath = getStorageDir();
@@ -21,11 +24,10 @@ public class StorageProviderImpl implements StorageProvider {
 
         if (!file.exists()) {
             file.mkdir();
-            System.out.println("------------ Storage Provider ------------");
-            System.out.println("\n--> Initialised storage dir '.storage' in project root\n");
-            System.out.println("------------------------------------------");
+            logger.info("Initialised storage dir '.storage' in project root\n");
+
         } else {
-            System.out.println("Storage Directory already initialized");
+            logger.info("Storage Directory already initialized");
         }
     }
 
@@ -87,7 +89,7 @@ public class StorageProviderImpl implements StorageProvider {
             Files.delete(filePath);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.warning(fileName);
         }
     }
     
