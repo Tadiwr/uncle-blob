@@ -8,7 +8,7 @@ export default async function HomePage() {
   const githubLink = "https://github.com/Tadiwr/uncle-blob";
   const swaggerUiLink = getSwaggerUrl();
 
-  const uploads = await getAllFileUploads();
+  const uploads = (await getAllFileUploads()).reverse();
 
   return (
     <div className='p-10 flex flex-col items-center justify-center text-center' >

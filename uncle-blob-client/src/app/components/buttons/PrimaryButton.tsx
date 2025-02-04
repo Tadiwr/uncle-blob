@@ -9,7 +9,8 @@ type Props = {
     href?: string,
     children?: ReactNode,
     className?: string,
-    onClick?: () => void
+    onClick?: () => void,
+    pending?:boolean
 
 }
 
@@ -26,16 +27,12 @@ export default function FormPrimaryButton({ children, className, onClick }: Prop
     )
 }
 
-export function PrimaryButton({ children, className, onClick }: Props) {
-
-    const [pending, setPending] = useState(false);
+export function PrimaryButton({ children, className, onClick, pending = false }: Props) {
 
     const handleOnClick = () => {
         
         if (onClick) {
-            setPending(true);
             onClick();
-            setPending(false);
         }
 
     }

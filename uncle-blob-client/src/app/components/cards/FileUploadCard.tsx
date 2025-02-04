@@ -7,6 +7,9 @@ type Props = {
 
 export default function FileUploadCard({upload}: Props) {
   return (
-    <div>{upload.fileName}</div>
+    <div className='rounded-xl bg-slate-100 p-5' >
+      <h1>File Name: <strong>{upload.fileName}</strong></h1>
+      <p>File Size: <strong>{upload.fileSize}</strong></p>
+    </div>
   )
 }

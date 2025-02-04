@@ -27,3 +27,23 @@ export async function getAllFileUploads() : Promise<FileUpload[]> {
 
     return fileUploads;
 }
+
+export async function uploadFile(file: File) : Promise<FileUpload> {
+
+    const endpoint = "/api/v1/files/upload?fileName=" + file.name;
+    const reqUrl = getBackendUrl() + endpoint;
+    const bytes = (await file.arrayBuffer()).transfer();
+
+    const apiRes = await fetch(reqUrl, {
+        method: "POST",
+        body: bytes,
+        headers: {
+            "Content-Type": file.type
+        }
+    });
+
+    const res = await apiRes.json() as FileUpload;
+
+    return res;
+
+}

@@ -3,23 +3,29 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import FormPrimaryButton, { PrimaryButton } from '../components/buttons/PrimaryButton';
 import ErrorCard from '../components/cards/ErrorCard';
+import { uploadFile } from '@/lib/api/init.api';
+import { FileUpload } from '@/lib/types/api.types';
+import FileUploadCard from '../components/cards/FileUploadCard';
 
 export default function UploadPage() {
 
     const [file, setFile] = useState<File>();
     const [message, setMessage] = useState("");
+    const [uploadRes, setUploadRes] = useState<FileUpload>();
+    const [pending, setPending] = useState(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
         setMessage("");
-
-        for (let x = 0; x < 100000000000000; x++) {
-            console.log(x);
-            
+        console.log(file);
+        
+        if (file) {
+            setPending(true);
+            const res = await uploadFile(file);
+            setUploadRes(res);
+            setPending(false);
         }
 
-
-        console.log(file);
         
     }
 
@@ -39,10 +45,14 @@ export default function UploadPage() {
 
             <input required onChange={onFileChange} type="file" placeholder='File Name' />
 
-            <PrimaryButton onClick={handleSubmit} className='w-full p-[10px] my-[5px]' >Upload</PrimaryButton>
+            <PrimaryButton pending={pending} onClick={handleSubmit} className='w-full p-[10px] my-[5px]' >Upload</PrimaryButton>
 
             <ErrorCard className='mt-2' errorMessage={message} />
         </form>
+
+        <div className='mt-10' >
+            { uploadRes && <FileUploadCard upload={uploadRes} /> }
+        </div>
     </div>
   )
 }
