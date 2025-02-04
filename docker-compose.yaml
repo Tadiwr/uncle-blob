@@ -4,7 +4,7 @@ services:
 
     container_name: uncle-blob-server
     image: tadiwrr/uncle-blob-server:latest
-    build: ./uncle-blob-server
+    # build: ./uncle-blob-server
 
     networks:
       - net
@@ -19,8 +19,9 @@ services:
       - "8888:8888"
 
   uncle-blob-client:
+    image: tadiwrr/uncle-blob-client
     container_name: uncle-blob-client
-    build: ./uncle-blob-client
+    # build: ./uncle-blob-client
 
     networks:
       - net
