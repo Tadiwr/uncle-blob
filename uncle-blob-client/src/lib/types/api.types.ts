@@ -2,7 +2,7 @@ export type FileUpload = {
 
     uuid: string,
     fileName: string,
-    oldFileName: string,
+    originalFileName: string,
     fileSize: number,
     contentType: string,
     updatedAt: Date,
