@@ -17,6 +17,7 @@ export default function FileUploadTable({ uploads }: Props) {
                         <th>File Name</th>
                         <th>Extension</th>
                         <th>Content Type</th>
+                        <th>File Name</th>
                         <th>Download</th>
                     </tr>
                 </thead>
@@ -47,6 +48,7 @@ function TableRow({upload}: TableRowProps) {
             <td className='p-1'>{originalFileName}</td>
             <td className='p-1' >{fileName.split(".").pop()}</td>
             <td className='p-1' >{contentType}</td>
+            <td className='p-1 text-wrap' >{fileName}</td>
             <td className='p-1' >
                 <a className='text-blue-500 text-center items-center justify-center h-full w-full flex' target='_blank' href={downloadLink} >
                     <FaCloudDownloadAlt />

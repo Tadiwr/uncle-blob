@@ -47,3 +47,26 @@ export async function uploadFile(file: File) : Promise<FileUpload> {
     return res;
 
 }
+
+export async function download(fileName: string) {
+
+    const endpoint = "/api/v1/files/download/" + fileName;
+    const reqUrl = getBackendUrl() + endpoint;
+
+    const apiRes = await fetch(reqUrl);
+    const buffer = await apiRes.json() as ArrayBuffer;
+
+    return buffer;
+}
+
+export function getDownloadLink(fileName: string, attach: boolean) {
+
+    const dispositionType = attach ? "attachment" : "inline" ;
+    const endpoint = `/api/v1/files/download/${fileName}?disposition=${dispositionType}`;
+    const reqUrl = getBackendUrl() + endpoint;
+
+    console.log(reqUrl);
+    
+
+    return reqUrl;
+}
