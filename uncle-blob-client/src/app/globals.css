@@ -7,3 +7,13 @@ table, th, td {
     border-color: rgb(241, 241, 240);
     text-align: start;
 }
+
+form > input {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(246, 246, 246);
+    border: solid;
+    border-color: rgb(231, 231, 231);
+    color: rgb(78, 78, 78);
+    margin: 5px;
+}
