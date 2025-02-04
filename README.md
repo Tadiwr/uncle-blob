@@ -1,6 +1,9 @@
 # Uncle Blob
 A ready to use and lightweight storage server built with love using Java. The name is pun and refference to uncle bob the author of The Clean Code book and the word `blob` just refferes to a `Binary Large Object` in the java script world. 
 
+![image](https://github.com/user-attachments/assets/d56c5397-312d-4788-ad1a-d895f6dc76ce)
+
+
 The inspiration behind uncle blob was to avoid having to create storage server for every single project. Uncle blob is distributed as a docker image that you can easily pull and run on your machine with minimal configuration
 
 Uncle blob also comes with a frontend ui made using Vue which allows you to visualise the files stored by the storage server. Here is a diagram to illustrate how it works
