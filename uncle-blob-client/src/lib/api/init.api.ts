@@ -53,9 +53,8 @@ export async function download(fileName: string) {
     const reqUrl = getBackendUrl() + endpoint;
 
     const apiRes = await fetch(reqUrl);
-    const buffer = await apiRes.json() as ArrayBuffer;
+    return await apiRes.json() as ArrayBuffer;
 
-    return buffer;
 }
 
 export function getDownloadLink(fileName: string, attach: boolean) {
