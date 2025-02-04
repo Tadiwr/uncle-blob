@@ -1,0 +1,41 @@
+services:
+
+  uncle-blob-server:
+
+    container_name: uncle-blob-server
+    image: tadiwrr/uncle-blob-server:latest
+    # build: ./uncle-blob-server
+
+    networks:
+      - net
+
+    environment:
+      - UNCLE_BLOB_STORAGE_DIR=/app/storage
+
+    volumes:
+      - storage_volume:/app/storage
+
+    ports:
+      - "8888:8888"
+
+  uncle-blob-client:
+    image: tadiwrr/uncle-blob-client
+    container_name: uncle-blob-client
+    # build: ./uncle-blob-client
+
+    networks:
+      - net
+
+    environment:
+      - BACKEND_URL=http://uncle-blob-server:8888
+
+    ports:
+      - "3000:3000"
+
+
+networks:
+  net:
+
+volumes:
+  storage_volume:
+    

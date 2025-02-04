@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; 
+
 import React, { Suspense } from 'react'
 import PrimaryLinkButton from './components/buttons/PrimaryLinkButton'
 import { getAllFileUploads, getSwaggerUrl } from '@/lib/api/init.api';

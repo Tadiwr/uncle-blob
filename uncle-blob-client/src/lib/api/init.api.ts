@@ -22,7 +22,7 @@ export async function getAllFileUploads() : Promise<FileUpload[]> {
     const endpoint = "/api/v1/files";
     const reqUrl = getBackendUrl() + endpoint;
 
-    const apiRes = await fetch(reqUrl);
+    const apiRes = await fetch(reqUrl, {cache: "no-cache"});
     return await apiRes.json() as FileUpload[];
 
 }
@@ -38,7 +38,8 @@ export async function uploadFile(file: File) : Promise<FileUpload> {
         body: bytes,
         headers: {
             "Content-Type": file.type
-        }
+        },
+        cache: "no-cache"
     });
 
     const res = await apiRes.json() as FileUpload;
@@ -52,7 +53,7 @@ export async function download(fileName: string) {
     const endpoint = "/api/v1/files/download/" + fileName;
     const reqUrl = getBackendUrl() + endpoint;
 
-    const apiRes = await fetch(reqUrl);
+    const apiRes = await fetch(reqUrl, {cache: "no-cache"});
     return await apiRes.json() as ArrayBuffer;
 
 }
