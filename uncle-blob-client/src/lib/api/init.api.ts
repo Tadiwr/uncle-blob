@@ -23,9 +23,8 @@ export async function getAllFileUploads() : Promise<FileUpload[]> {
     const reqUrl = getBackendUrl() + endpoint;
 
     const apiRes = await fetch(reqUrl);
-    const fileUploads = await apiRes.json() as FileUpload[];
+    return await apiRes.json() as FileUpload[];
 
-    return fileUploads;
 }
 
 export async function uploadFile(file: File) : Promise<FileUpload> {
