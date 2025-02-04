@@ -22,7 +22,7 @@ export default function NavBar() {
 
         {
             lable: "Download",
-            href: "/upload"
+            href: "/download"
         }
     ]
 

@@ -15,7 +15,7 @@ export default function NavLink({ data, className }: Props) {
     const pathName = usePathname();
     const {lable, href} = data;
 
-    const isActive = href ? pathName.startsWith(href) : false;
+    const isActive = href ? pathName === href : false;
 
     return (
         <a href={href} className={twMerge("font", isActive ? "text-black font-semibold" : "text-white hover:text-slate-200", className)} >

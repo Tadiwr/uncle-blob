@@ -20,7 +20,7 @@ export default function MobileNavBar({ navLinks }: Props) {
     return (
         <div className='md:hidden bg-orange-500 w-full flex flex-col items-center justify-start text-white h-full' >
             <div className=' w-full flex flex-row items-center h-full p-3' >
-                <h1 className='font-bold text-lg' >UncleBlob</h1>
+                <a href="/" className='font-bold text-lg' >UncleBlob</a>
 
                 <div onClick={toogle} className=' flex flex-row h-full items-center justify-end w-full' >
                     <div className={twMerge('grid grid-cols-1 gap-1 transition-all', showLinks ? "rotate-90" : "")} >
