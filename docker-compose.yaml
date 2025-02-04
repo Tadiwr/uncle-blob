@@ -18,6 +18,20 @@ services:
     ports:
       - "8888:8888"
 
+  uncle-blob-client:
+    container_name: uncle-blob-client
+    build: ./uncle-blob-client
+
+    networks:
+      - net
+
+    environment:
+      - BACKEND_URL=http://uncle-blob-server:8888
+
+    ports:
+      - "3000:3000"
+
+
 networks:
   net:
 
