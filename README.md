@@ -1,11 +1,55 @@
 # Uncle Blob
 A ready to use and lightweight storage server built with love using Java. The name is pun and refference to uncle bob the author of The Clean Code book and the word `blob` just refferes to a `Binary Large Object` in the java script world.
 
-[Check out docker image on Github Pacckages](https://github.com/Tadiwr/uncle-blob/pkgs/container/uncle-blob-server)
-[Checkout out docker image for Uncle Blob Client]()
+[Uncle Blob Server Docker Image](https://github.com/Tadiwr/uncle-blob/pkgs/container/uncle-blob-server)
+
+[Uncle Blob Client Docker Image](https://github.com/Tadiwr/uncle-blob/pkgs/container/uncle-blob-client)
 
 ![image](https://github.com/user-attachments/assets/d56c5397-312d-4788-ad1a-d895f6dc76ce)
 
+## Running Uncle Blob in docker compose
+``` yaml
+services:
+
+  uncle-blob-server:
+
+    container_name: uncle-blob-server
+    image: ghcr.io/tadiwr/uncle-blob-server:latest
+
+    networks:
+      - net
+
+    environment:
+      - UNCLE_BLOB_STORAGE_DIR=/app/storage
+
+    volumes:
+      - storage_volume:/app/storage
+
+    ports:
+      - "8888:8888"
+
+  uncle-blob-client:
+    image: ghcr.io/tadiwr/uncle-blob-client:latest
+    container_name: uncle-blob-client
+    # build: ./uncle-blob-client
+
+    networks:
+      - net
+
+    environment:
+      - BACKEND_URL=http://uncle-blob-server:8888
+
+    ports:
+      - "3000:3000"
+
+
+networks:
+  net:
+
+volumes:
+  storage_volume:
+
+```
 
 The inspiration behind uncle blob was to avoid having to create storage server for every single project. Uncle blob is distributed as a docker image that you can easily pull and run on your machine with minimal configuration
 
