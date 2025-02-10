@@ -17,4 +17,7 @@ public interface StorageProvider {
 
     public void deleteFile(String fileName);
 
+    public void deleteAllFiles();
+
+    public boolean exists(String fileName);
 }

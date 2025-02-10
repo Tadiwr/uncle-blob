@@ -1,5 +1,6 @@
 package com.codapt.uncle_blob_server.providers.storage;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -122,6 +123,39 @@ public class StorageProviderImpl implements StorageProvider {
         } catch (Exception e) {
             logger.warning(fileName);
         }
+    }
+
+    @Override
+    public void deleteAllFiles() {
+
+        try {
+            
+            
+            File storageRoot = storagePath.toFile();
+            
+            for (File child: storageRoot.listFiles()) {
+                deleteRecursive(child);
+            }
+
+        } catch (Exception e) {
+            logger.warning("Exception throw when delete all files " + e.getMessage());
+        }
+    }
+
+    private void deleteRecursive(File file) throws IOException {
+
+        if (file.isDirectory()) {
+            for (File child: file.listFiles()) {
+                deleteRecursive(child);
+            }
+        }
+        
+        Files.deleteIfExists(file.toPath());
+    }
+
+    @Override
+    public boolean exists(String fileName) {
+        return Files.exists(storagePath.resolve(fileName));
     }
     
 }
