@@ -1,10 +1,8 @@
-package com.codapt.uncle_blob_server.utils;
+package com.codapt.uncle_blob_server.providers.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import com.codapt.uncle_blob_server.providers.utils.FileName;
 
 public class FileNameTests {
     
