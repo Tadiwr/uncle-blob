@@ -16,9 +16,17 @@ public class StorageProviderImpl implements StorageProvider {
 
     private Logger logger = Logger.getLogger(StorageProviderImpl.class.getName());
 
-    public StorageProviderImpl(String storagePathStr) throws IOException {
+    public static StorageProviderImpl fromStrPath(String storagePathStr) throws IOException {
         
-        this.storagePath = Paths.get(storagePathStr);
+        Path path = Paths.get(storagePathStr);
+
+        return new StorageProviderImpl(path);
+         
+    }
+
+    public StorageProviderImpl(Path path) throws IOException {
+        
+        this.storagePath = path;
 
         if (!Files.exists(storagePath)) {
 

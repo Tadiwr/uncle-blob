@@ -23,18 +23,19 @@ public class BeansConfig {
     public StorageProvider storageProvider() throws IOException {
 
         try {    
-            return new StorageProviderImpl(storagePath);
+            return StorageProviderImpl.fromStrPath(storagePath);
+            
         } catch (Exception e) {
 
             e.printStackTrace();
 
-            String newPath = System.getProperty("user.dir") + File.separator + ".storage";
+            String fallbackPath = System.getProperty("user.dir") + File.separator + ".storage";
             String message = "Could not create a storage directory with uncle-blob.storage-dir=" +
-            storagePath + ". Resolving to '" + newPath + " as the new storage directory";
+            storagePath + ". Resolving to '" + fallbackPath + " as the new storage directory";
 
             logger.warning(message);
 
-            return new StorageProviderImpl(newPath);
+            return StorageProviderImpl.fromStrPath(fallbackPath);
         }
     }
 }
