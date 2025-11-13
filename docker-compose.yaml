@@ -24,7 +24,7 @@ services:
       - net
 
     environment:
-      - BACKEND_URL=http://uncle-blob-server:8888
+      - BACKEND_URL=https://blob.playroster.io
 
 
 networks:
