@@ -30,7 +30,7 @@ services:
       - BACKEND_URL=http://uncle-blob-server:8888
 
     ports:
-      - "4321:4321"
+      - "4321:3000"
 
 
 networks:
