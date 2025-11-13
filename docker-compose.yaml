@@ -15,9 +15,6 @@ services:
     volumes:
       - storage_volume:/app/storage
 
-    ports:
-      - "8888:8888"
-
   uncle-blob-client:
     image: tadiwrr/uncle-blob-client
     container_name: uncle-blob-client
@@ -28,9 +25,6 @@ services:
 
     environment:
       - BACKEND_URL=http://uncle-blob-server:8888
-
-    ports:
-      - "4321:3000"
 
 
 networks:
